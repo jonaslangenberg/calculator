@@ -62,34 +62,39 @@ myPoint.addEventListener("click", () => {
 const resultBtn = document.querySelector("#equals");
 
 resultBtn.addEventListener("click", () => {
-    let endValueOne = parseFloat(currentOperation.valueOne);
-    let endValueTwo = parseFloat(currentOperation.valueTwo);
-    let endOperator = currentOperation.operator;
-    if (endOperator == "+"){
-        let endResult = endValueOne + endValueTwo;
-        display.textContent = endResult;
-        currentOperation.valueOne = endResult.toString();
-        currentOperation.operator = 0;
-        currentOperation.valueTwo = 0;
-    } else if(endOperator == "-"){
-        let endResult = endValueOne - endValueTwo;
-        display.textContent = endResult;
-        currentOperation.valueOne = endResult.toString();
-        currentOperation.operator = 0;
-        currentOperation.valueTwo = 0;
-    } else if(endOperator == "*"){
-        let endResult = endValueOne * endValueTwo;
-        display.textContent = endResult;
-        currentOperation.valueOne = endResult.toString();
-        currentOperation.operator = 0;
-        currentOperation.valueTwo = 0;
-    } else{
-        let endResult = endValueOne / endValueTwo;
-        display.textContent = endResult;
-        currentOperation.valueOne = endResult.toString();
-        currentOperation.operator = 0;
-        currentOperation.valueTwo = 0;
+    if(currentOperation.valueTwo == 0){
+        alert("First input a second value!");
+    } else {
+        let endValueOne = parseFloat(currentOperation.valueOne);
+        let endValueTwo = parseFloat(currentOperation.valueTwo);
+        let endOperator = currentOperation.operator;
+        if (endOperator == "+"){
+            let endResult = endValueOne + endValueTwo;
+            display.textContent = endResult;
+            currentOperation.valueOne = endResult.toString();
+            currentOperation.operator = 0;
+            currentOperation.valueTwo = 0;
+        } else if(endOperator == "-"){
+            let endResult = endValueOne - endValueTwo;
+            display.textContent = endResult;
+            currentOperation.valueOne = endResult.toString();
+            currentOperation.operator = 0;
+            currentOperation.valueTwo = 0;
+        } else if(endOperator == "*"){
+            let endResult = endValueOne * endValueTwo;
+            display.textContent = endResult;
+            currentOperation.valueOne = endResult.toString();
+            currentOperation.operator = 0;
+            currentOperation.valueTwo = 0;
+        } else{
+            let endResult = endValueOne / endValueTwo;
+            display.textContent = endResult;
+            currentOperation.valueOne = endResult.toString();
+            currentOperation.operator = 0;
+            currentOperation.valueTwo = 0;
+        }
     }
+    
 });
 
 const erazer = document.querySelector("#erase");
