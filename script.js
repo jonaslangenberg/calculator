@@ -128,3 +128,28 @@ delBtn.addEventListener("click", () => {
         
     }
 });
+
+const changeValue = document.querySelector("#change");
+changeValue.addEventListener("click", () => {
+    if(currentOperation.operator == ""){
+        if(changeValue.value == "-"){
+            currentOperation.valueOne = "-" + currentOperation.valueOne;
+            changeValue.setAttribute("value", "+");
+            display.textContent = currentOperation.valueOne;
+        } else {
+            currentOperation.valueOne = currentOperation.valueOne.slice(1, currentOperation.valueOne.length);
+            changeValue.setAttribute("value", "-");
+            display.textContent = currentOperation.valueOne;
+        }
+    } else {
+        if(changeValue.value == "-"){
+            currentOperation.valueTwo = "-" + currentOperation.valueTwo;
+            changeValue.setAttribute("value", "+");
+            display.textContent = currentOperation.valueTwo;
+        } else {
+            currentOperation.valueTwo = currentOperation.valueTwo.slice(1, currentOperation.valueTwo.length);
+            changeValue.setAttribute("value", "-");
+            display.textContent = currentOperation.valueTwo;
+        }
+    }
+});
