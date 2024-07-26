@@ -104,3 +104,27 @@ erazer.addEventListener("click", () => {
     currentOperation.operator = 0;
     display.textContent = 0;
 });
+
+
+const delBtn = document.querySelector("#backspace");
+delBtn.addEventListener("click", () => {
+    if(currentOperation.valueTwo == 0 && currentOperation.valueOne != 0 && currentOperation.operator == 0){
+        let placeholderForString = currentOperation.valueOne;
+        placeholderForString = placeholderForString.toString();
+        if(placeholderForString.length > 1){
+            currentOperation.valueOne = placeholderForString.slice(0, placeholderForString.length - 1);
+        }
+        display.textContent = currentOperation.valueOne;
+        
+    } else if (currentOperation.operator != 0 && currentOperation.valueTwo == 0){
+        alert("Not possible!");
+    } else if(currentOperation.operator != 0 && currentOperation.valueTwo != 0){
+        let placeholderForString = currentOperation.valueTwo;
+        placeholderForString = placeholderForString.toString();
+        if(placeholderForString.length > 1){
+            currentOperation.valueOne = placeholderForString.slice(0, placeholderForString.length - 1);
+        }
+        display.textContent = currentOperation.valueTwo;
+        
+    }
+});
