@@ -101,3 +101,10 @@ resultBtn.addEventListener("click", () => {
     }
 });
 
+const erazer = document.querySelector("#erase");
+erazer.addEventListener("click", () => {
+    currentOperation.valueOne = 0;
+    currentOperation.valueTwo = 0;
+    currentOperation.operator = 0;
+    display.textContent = 0;
+});
