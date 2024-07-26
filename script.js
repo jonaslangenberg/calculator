@@ -2,17 +2,17 @@ const display = document.querySelector("#display");
 
 
 const allNumbers = document.querySelectorAll(".number");
-let currentOperation = {valueOne: 0, valueTwo: 0, operator: 0,};
+let currentOperation = {valueOne: "", valueTwo: "", operator: "",};
 for(let number of allNumbers){
     console.log(number.value);
     number.addEventListener("click", () => {
-        if(currentOperation.valueOne == 0){
+        if(currentOperation.valueOne == ""){
             currentOperation.valueOne = number.value;
             display.textContent = currentOperation.valueOne;
-        } else if(currentOperation.valueTwo == 0 && currentOperation.operator != 0){
+        } else if(currentOperation.valueTwo == "" && currentOperation.operator != ""){
             currentOperation.valueTwo = number.value;
             display.textContent = currentOperation.valueTwo;
-        } else if (currentOperation.valueOne != 0 && currentOperation.operator == 0){
+        } else if (currentOperation.valueOne != "" && currentOperation.operator == ""){
             currentOperation.valueOne += number.value;
             display.textContent = currentOperation.valueOne;
         } else {
@@ -27,7 +27,7 @@ const allOperators = document.querySelectorAll(".operator");
 for(let operator of allOperators){
     console.log(operator.value);
     operator.addEventListener("click", () => {
-        if(currentOperation.operator == 0){
+        if(currentOperation.operator == ""){
             currentOperation.operator = operator.value;
             display.textContent = currentOperation.operator;
         }
@@ -39,17 +39,17 @@ const myPoint = document.querySelector("#point");
 myPoint.addEventListener("click", () => {
     let checkOneForPoint = currentOperation.valueOne.toString();
     let checkTwoForPoint = currentOperation.valueTwo.toString();
-    if(currentOperation.valueOne == 0){
+    if(currentOperation.valueOne == ""){
         currentOperation.valueOne = "0.";
         display.textContent = currentOperation.valueOne;
-    } else if(currentOperation.valueTwo == 0 && currentOperation.operator != 0){
+    } else if(currentOperation.valueTwo == "" && currentOperation.operator != ""){
         currentOperation.valueTwo = "0.";
         display.textContent = currentOperation.valueTwo;
-    } else if(checkOneForPoint.includes(".") && currentOperation.operator == 0){
+    } else if(checkOneForPoint.includes(".") && currentOperation.operator == ""){
         alert("There already is a point in that value!");
-    }else if(checkTwoForPoint.includes(".") && currentOperation.operator != 0){
+    }else if(checkTwoForPoint.includes(".") && currentOperation.operator != ""){
         alert("There already is a point in that value!");
-    }else if (currentOperation.valueOne != 0 && currentOperation.operator == 0){
+    }else if (currentOperation.valueOne != "" && currentOperation.operator == ""){
         currentOperation.valueOne += myPoint.value;
         display.textContent = currentOperation.valueOne;
     } else {
@@ -62,7 +62,7 @@ myPoint.addEventListener("click", () => {
 const resultBtn = document.querySelector("#equals");
 
 resultBtn.addEventListener("click", () => {
-    if(currentOperation.valueTwo == 0){
+    if(currentOperation.valueTwo == ""){
         alert("First input a second value!");
     } else {
         let endValueOne = parseFloat(currentOperation.valueOne);
@@ -72,26 +72,26 @@ resultBtn.addEventListener("click", () => {
             let endResult = endValueOne + endValueTwo;
             display.textContent = endResult;
             currentOperation.valueOne = endResult.toString();
-            currentOperation.operator = 0;
-            currentOperation.valueTwo = 0;
+            currentOperation.operator = "";
+            currentOperation.valueTwo = "";
         } else if(endOperator == "-"){
             let endResult = endValueOne - endValueTwo;
             display.textContent = endResult;
             currentOperation.valueOne = endResult.toString();
-            currentOperation.operator = 0;
-            currentOperation.valueTwo = 0;
+            currentOperation.operator = "";
+            currentOperation.valueTwo = "";
         } else if(endOperator == "*"){
             let endResult = endValueOne * endValueTwo;
             display.textContent = endResult;
             currentOperation.valueOne = endResult.toString();
-            currentOperation.operator = 0;
-            currentOperation.valueTwo = 0;
+            currentOperation.operator = "";
+            currentOperation.valueTwo = "";
         } else{
             let endResult = endValueOne / endValueTwo;
             display.textContent = endResult;
             currentOperation.valueOne = endResult.toString();
-            currentOperation.operator = 0;
-            currentOperation.valueTwo = 0;
+            currentOperation.operator = "";
+            currentOperation.valueTwo = "";
         }
     }
     
@@ -99,16 +99,16 @@ resultBtn.addEventListener("click", () => {
 
 const erazer = document.querySelector("#erase");
 erazer.addEventListener("click", () => {
-    currentOperation.valueOne = 0;
-    currentOperation.valueTwo = 0;
-    currentOperation.operator = 0;
+    currentOperation.valueOne = "";
+    currentOperation.valueTwo = "";
+    currentOperation.operator = "";
     display.textContent = 0;
 });
 
 
 const delBtn = document.querySelector("#backspace");
 delBtn.addEventListener("click", () => {
-    if(currentOperation.valueTwo == 0 && currentOperation.valueOne != 0 && currentOperation.operator == 0){
+    if(currentOperation.valueTwo == "" && currentOperation.valueOne != "" && currentOperation.operator == 0){
         let placeholderForString = currentOperation.valueOne;
         placeholderForString = placeholderForString.toString();
         if(placeholderForString.length > 1){
@@ -116,9 +116,9 @@ delBtn.addEventListener("click", () => {
         }
         display.textContent = currentOperation.valueOne;
         
-    } else if (currentOperation.operator != 0 && currentOperation.valueTwo == 0){
+    } else if (currentOperation.operator != "" && currentOperation.valueTwo == ""){
         alert("Not possible!");
-    } else if(currentOperation.operator != 0 && currentOperation.valueTwo != 0){
+    } else if(currentOperation.operator != "" && currentOperation.valueTwo != ""){
         let placeholderForString = currentOperation.valueTwo;
         placeholderForString = placeholderForString.toString();
         if(placeholderForString.length > 1){
