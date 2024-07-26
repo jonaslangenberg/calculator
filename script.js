@@ -2,25 +2,21 @@ const display = document.querySelector("#display");
 
 
 const allNumbers = document.querySelectorAll(".number");
-let currentOperation = {valueOne: 0, valueTwo: 0, operator: 0, result: 0,};
+let currentOperation = {valueOne: 0, valueTwo: 0, operator: 0,};
 for(let number of allNumbers){
     console.log(number.value);
     number.addEventListener("click", () => {
         if(currentOperation.valueOne == 0){
             currentOperation.valueOne = number.value;
-            console.log(currentOperation);
             display.textContent = currentOperation.valueOne;
         } else if(currentOperation.valueTwo == 0 && currentOperation.operator != 0){
             currentOperation.valueTwo = number.value;
             display.textContent = currentOperation.valueTwo;
-            console.log(currentOperation);
         } else if (currentOperation.valueOne != 0 && currentOperation.operator == 0){
             currentOperation.valueOne += number.value;
-            console.log(currentOperation);
             display.textContent = currentOperation.valueOne;
         } else {
             currentOperation.valueTwo += number.value;
-            console.log(currentOperation);
             display.textContent = currentOperation.valueTwo;
         }
     });
@@ -33,7 +29,6 @@ for(let operator of allOperators){
     operator.addEventListener("click", () => {
         if(currentOperation.operator == 0){
             currentOperation.operator = operator.value;
-            console.log(currentOperation);
             display.textContent = currentOperation.operator;
         }
     });
@@ -47,11 +42,9 @@ myPoint.addEventListener("click", () => {
     if(currentOperation.valueOne == 0){
         currentOperation.valueOne = "0.";
         display.textContent = currentOperation.valueOne;
-        console.log(currentOperation);
     } else if(currentOperation.valueTwo == 0 && currentOperation.operator != 0){
         currentOperation.valueTwo = "0.";
         display.textContent = currentOperation.valueTwo;
-        console.log(currentOperation);
     } else if(checkOneForPoint.includes(".") && currentOperation.operator == 0){
         alert("There already is a point in that value!");
     }else if(checkTwoForPoint.includes(".") && currentOperation.operator != 0){
@@ -59,11 +52,9 @@ myPoint.addEventListener("click", () => {
     }else if (currentOperation.valueOne != 0 && currentOperation.operator == 0){
         currentOperation.valueOne += myPoint.value;
         display.textContent = currentOperation.valueOne;
-        console.log(currentOperation);
     } else {
         currentOperation.valueTwo += myPoint.value;
         display.textContent = currentOperation.valueTwo;
-        console.log(currentOperation);
     }
 });
 
